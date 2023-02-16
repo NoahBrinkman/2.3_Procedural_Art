@@ -15,7 +15,7 @@ namespace Demo {
 				return;
 
 			FacadeParameters param = Root.GetComponent<FacadeParameters>();
-
+			
 			Row wall = CreateSymbol<Row>("wall");
 			wall.Initialize(Width, param.wallStyle);
 			wall.Generate(buildDelay);

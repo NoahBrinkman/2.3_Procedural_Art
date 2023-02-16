@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3604920485432597357}
   - component: {fileID: 3604920485432597356}
   m_Layer: 0
-  m_Name: ProceduralBuilding
+  m_Name: ProceduralSimpleBuilding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f1ee5bf00f6689448756671194e04f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildDelay: 0.1
   buildingHeight: -1
   stockHeight: 1
   maxHeight: 5
@@ -51,9 +52,11 @@ MonoBehaviour:
   stockPrefabs:
   - {fileID: 2639242805350684441, guid: 4e431be3aef108b47a70fc5e9e63d133, type: 3}
   - {fileID: 4630473164913541460, guid: 5e149f377887ae0418f31147accf2925, type: 3}
+  - {fileID: 128028352836899550, guid: 352c2d72a92f3094e93a64390fcb557e, type: 3}
   roofPrefabs:
   - {fileID: 4977362457285617005, guid: ee7ae2596ddf3924da8d647fe05fb617, type: 3}
-  - {fileID: 4357396193210809381, guid: 52629463b6271fe46b5a5eeebe8294e3, type: 3}
+  - {fileID: 4357396193210809381, guid: 216dd7cf62bdc9b4aa8b956ff2f4e17e, type: 3}
+  - {fileID: 4977362457285617005, guid: 41994ac6a041c0d4db7ee93e506ed055, type: 3}
 --- !u!114 &3604920485432597356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,3 +70,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BuildKey: 32
+  BuildOnStart: 0

@@ -9,9 +9,13 @@ namespace Demo {
 		public int rowWidth = 10;
 		public int columnWidth = 10;
 		public GameObject[] buildingPrefabs;
-
+		
 		public float buildDelaySeconds = 0.1f;
 
+		[SerializeField] private float minXOffset;
+		[SerializeField] private float maxXOffset;
+		[SerializeField] private float minZOffset;
+		[SerializeField] private float maxZOffset;
 		void Start() {
 			Generate();
 		}
@@ -37,7 +41,9 @@ namespace Demo {
 					GameObject newBuilding = Instantiate(buildingPrefabs[buildingIndex], transform);
 
 					// Place it in the grid:
-					newBuilding.transform.localPosition = new Vector3(col * columnWidth, 0, row*rowWidth);
+					float xOffset = Random.Range(minXOffset,maxXOffset);
+					float zOffset = Random.Range(minZOffset, maxZOffset);
+					newBuilding.transform.localPosition = new Vector3(col * columnWidth + xOffset, 0, row*rowWidth + zOffset);
 
 					// If the building has a Shape (grammar) component, launch the grammar:
 					Shape shape = newBuilding.GetComponent<Shape>();

@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Demo {
 	public class Row : Shape {
 		public int Number;
 		public GameObject[] prefabs=null;
 		public Vector3 direction;
-
+		public int[] pattern;
 		public void Initialize(int Number, GameObject[] pPrefabs, Vector3 dir=new Vector3()) {
 			this.Number=Number;
 
@@ -25,9 +26,12 @@ namespace Demo {
 				return;
 
 			var param = Root.GetComponent<FacadeParameters>();
-			int[] pattern = null;
+
 			if (param!=null) {
-				pattern=param.wallPattern;
+				if (param.wallPattern != null && param.wallPattern.Length > 0)
+				{
+					pattern=param.wallPattern;
+				}
 			}
 
 			for (int i=0;i<Number;i++) {            // spawn the prefabs

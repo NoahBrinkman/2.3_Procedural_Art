@@ -32,6 +32,13 @@ public class RandomGenerator : MonoBehaviour {
 	}
 
 	public void ResetRandom() {
-		rand = new System.Random();
+		if (seed != 0)
+		{
+			rand = new System.Random(seed);
+		}
+		else
+		{
+			rand = new System.Random();
+		}
 	}
 }
