@@ -11,8 +11,14 @@ public class CurveEditor : Editor {
 
 	public override void OnInspectorGUI()
 	{
-	
 		base.OnInspectorGUI();
+		Curve c = target as Curve;
+		
+		if (GUILayout.Button("Apply"))
+		{
+			c.Apply();
+
+		}
 	}
 
 	// This method is called by Unity whenever it renders the scene view.
@@ -20,16 +26,17 @@ public class CurveEditor : Editor {
 	void OnSceneGUI() {
 		if (curve.points == null)
 			return;
-
+		Curve c = target as Curve;
+		
 		DrawAndMoveCurve();
-
+		
 		// Add new points if needed:
 		Event e = Event.current;
 		if (e.type == EventType.KeyDown && e.keyCode == KeyCode.Space) {
 			Debug.Log("Space pressed - trying to add point to curve");
 			e.Use(); // To prevent the event from being handled by other editor functionality
 		}
-
+		
 		ShowAndMovePoints();
 	}
 
@@ -73,12 +80,25 @@ public class CurveEditor : Editor {
 
 			// TODO (1.2): Draw a line from previous point to current point, in white
 
+			Handles.DrawLine(previousPoint,currentPoint,3);
+	
 
 			previousPoint = currentPoint;
-
+			EditorGUI.BeginChangeCheck();
 			// TODO (1.2): 
 			// Draw position handles (see the above example code)
-			// Record in the undo list and mark the scene dirty when the handle is moved.
+				currentPoint = Handles.PositionHandle(currentPoint , Quaternion.identity);
+
+				if (EditorGUI.EndChangeCheck())
+				{
+					Undo.RecordObject(curve, "updatedPostiion");
+					curve.points[i] = curve.transform.InverseTransformPoint(currentPoint);
+					curve.Apply();
+					EditorUtility.SetDirty(curve);
+				}
+				//curve.points[i] = currentPoint;
+				
+				// Record in the undo list and mark the scene dirty when the handle is moved.
 
 		}
 	}
