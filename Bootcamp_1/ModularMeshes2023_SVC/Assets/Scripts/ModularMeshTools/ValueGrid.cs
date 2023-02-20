@@ -33,7 +33,7 @@ namespace Demo {
 		}
 
 		private void Update() {
-			if (Input.GetKeyDown(KeyCode.G)) {
+			if (Input.GetKey(KeyCode.G)) {
 				InitializeGrid();
 				Debug.Log("ValueGrid: newly initialized. Press the BuildTrigger key to regenerate game objects");
 			}

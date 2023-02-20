@@ -133,6 +133,16 @@ namespace Demo {
 								transform
 							);
 							newObj.transform.localScale=new Vector3(0.3f, 0.3f, 0.3f);
+							for (int k = -1; k <= 1; k++)
+							{
+								for (int l = -1; l < 1; l++)
+								{
+									if (!grid.InRange(i + k, j +l))
+									{
+										newObj.transform.localScale =new Vector3(0.5f, 0.5f, 0.5f);
+									}
+								}
+							}
 						}
 					}
 				}

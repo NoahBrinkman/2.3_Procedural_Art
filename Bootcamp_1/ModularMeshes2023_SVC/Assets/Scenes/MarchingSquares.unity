@@ -170,12 +170,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildDelay: 0.1
   cornerPrefabs:
-  - {fileID: -927199367670048503, guid: c63d6fd6af37d3348bcae4494999f8ec, type: 3}
-  - {fileID: -927199367670048503, guid: 75228dc542ffe154898d192cceed9b16, type: 3}
-  - {fileID: -927199367670048503, guid: 5bda5f51354ae0a4dbeba1068e5a970e, type: 3}
+  - {fileID: -927199367670048503, guid: 49baf8baac190724292d1625ee06dba8, type: 3}
+  - {fileID: -927199367670048503, guid: 34117a05a14be2c4886b67ada41a7033, type: 3}
+  - {fileID: -927199367670048503, guid: aaeaf3decacda0340822c25b54525724, type: 3}
   - {fileID: -927199367670048503, guid: 17f4b79a09b90a04c86a789027d2fbfe, type: 3}
-  - {fileID: -927199367670048503, guid: b000453f08dd38548bf59a6e2d937cec, type: 3}
-  - {fileID: -927199367670048503, guid: ec5a3c5b4ddad1b4c921df245972c2bc, type: 3}
+  - {fileID: -927199367670048503, guid: 236322ffd13d2d243b4214d20bb5f7f6, type: 3}
+  - {fileID: -927199367670048503, guid: a7bed862d6ec5f24eb0a2ee77bf4f7df, type: 3}
   debugPrefab: {fileID: -927199367670048503, guid: 50c8c740023493e48a752bf6beed6688,
     type: 3}
   prefabRotations: 000000000200000002000000000000000000000000000000
