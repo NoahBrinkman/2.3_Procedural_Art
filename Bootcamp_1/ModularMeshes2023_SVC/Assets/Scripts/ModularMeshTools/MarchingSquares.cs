@@ -127,22 +127,19 @@ namespace Demo {
 				for (int i = 0; i<grid.Width; i++) {
 					for (int j = 0; j<grid.Depth; j++) {
 						if (grid.GetCell(i,j)<=0) {
-							GameObject newObj = SpawnPrefab(debugPrefab,
-								new Vector3(i, 0.1f, j) * grid.cellSize,
-								Quaternion.identity,
-								transform
-							);
-							newObj.transform.localScale=new Vector3(0.3f, 0.3f, 0.3f);
-							for (int k = -1; k <= 1; k++)
-							{
-								for (int l = -1; l < 1; l++)
+							int bitMask = GetBitMask(i, j);
+							if (((i == 0 || j == 0) || (i == grid.Width-1 || j == grid.Depth-1)) 
+							    || bitMask > 0 && bitMask < 15)
 								{
-									if (!grid.InRange(i + k, j +l))
-									{
-										newObj.transform.localScale =new Vector3(0.5f, 0.5f, 0.5f);
-									}
-								}
+									GameObject newObj = SpawnPrefab(debugPrefab,
+									new Vector3(i, 0.1f, j) * grid.cellSize,
+									Quaternion.identity,
+									transform
+								);
+								newObj.transform.localScale=new Vector3(0.3f, 0.3f, 0.3f);
 							}
+
+							
 						}
 					}
 				}
