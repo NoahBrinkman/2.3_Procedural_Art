@@ -485,5 +485,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingPrefab: {fileID: 5248454808316020325, guid: 59cd79e6d6a8f604e8e47750d1b915a6, type: 3}
-  createdBuildings:
-  - {fileID: 0}
+  createdBuildings: []
