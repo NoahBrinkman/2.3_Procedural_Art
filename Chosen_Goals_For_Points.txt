@@ -1,0 +1,34 @@
+A clear description of architectural elements is given. 1 Point = 1/9
+
+A clear description of the city shape is given
+(roads, neighbourhoods, terrain elements, top-down-
+structure)								  1 point = 2/9
+
+A clear description of materials is given (necessary
+amount, state of material, material properties). 	  1 point = 3/9
+
+New procedural techniques or tools have been
+researched and described (“new” = not treated in
+detail during the labtures)					  1 point  = 4/9
+
+A wide range of shapes is created procedurally from
+a smaller range of building blocks. 			  1 point = 5/9
+
+Meshes are created or modified procedurally (e.g.
+lathe, extrude, warp). 	(roads)			 	  1 point = 6/9 points(nice)
+
+The resulting structures match the visual research. (create what you planned)     
+									  1 point = 7/9 points
+
+A consistent scale for size and placement of
+buildings and other structures has been established. 	  1 point = 8/9
+
+
+Building parameters can be controlled before
+generation (e.g., different neighbourhoods have
+different building styles)					   1 point = 9/9
+
+
+
+Appropriate lighting and Post Processing / VFX have
+been applied to enhance visual fidelity. 			   1 point = 10/9
