@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class Neighbourhood : MonoBehaviour
 {
     public Vector3 size = Vector3.one;
-    
+    public Color color;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +25,7 @@ public class Neighbourhood : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        Gizmos.color = color;
         Gizmos.DrawCube(transform.position, size);
     }
 }
