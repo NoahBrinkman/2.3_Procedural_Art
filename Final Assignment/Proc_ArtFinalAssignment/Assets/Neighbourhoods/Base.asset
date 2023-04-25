@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef20b189d96d7494cac37b95a127ba27, type: 3}
+  m_Name: Base
+  m_EditorClassIdentifier: 
+  groundFloors:
+  - {fileID: 7688240448009027294, guid: c693fb79e3cabf644918efffe3062688, type: 3}
+  - {fileID: 8452046614065536062, guid: a4dce11cb9793b2499829c2e41bd99a3, type: 3}
+  - {fileID: 8923195871083801155, guid: 8f34f119bfb5d734b98c2817a87f27fd, type: 3}
+  - {fileID: 9174481657148563357, guid: 22cca63895318174197235b2863a0edd, type: 3}
+  - {fileID: 5120868418626695701, guid: ee308a5e7cf0b2e47b4fa1c28c6edd57, type: 3}
+  - {fileID: 3769257659782752184, guid: 6b194ab494cafed468a1c029476a722d, type: 3}
+  floors:
+  - {fileID: 4890371138725799051, guid: 1af0dd6936f3c4b4ea333839d8d79603, type: 3}
+  - {fileID: 2940947175909110127, guid: 5b91b05055c664d4cbe97c669519ebd8, type: 3}
+  - {fileID: 8071859109748062676, guid: 081bab947d843ae44ac381d6e15efeb8, type: 3}
+  - {fileID: 8993263152546404931, guid: 9daef3b57b3a34a4ca40761bea9b1ed9, type: 3}
+  - {fileID: 5627347705947761291, guid: 43ac95a70dbe4544aa2f026ade736e9b, type: 3}
+  - {fileID: 1045836189958450165, guid: c877f11fd44cece4694167e39c33e157, type: 3}
+  - {fileID: 9141254822524231083, guid: c724f080969af58479e12a703c92fd38, type: 3}
+  - {fileID: 1606273515352828078, guid: e172d4475cbdb9f43bffe852a7666774, type: 3}
+  - {fileID: 8891376260639223087, guid: 42794f80c70a8324aa57b7f92e632bd2, type: 3}
+  - {fileID: 3966572536689073376, guid: b073ae53af81a244584c6240a00d655a, type: 3}
+  - {fileID: 2476853759597347184, guid: 968316d46c470b44eb3420623276374b, type: 3}
+  - {fileID: 5671855688399933956, guid: bf01ccf04754fe54584586896c121d08, type: 3}
+  - {fileID: 3324863285779050975, guid: 39f3b5755e9fae94aa61f4b5263ae7f6, type: 3}
+  - {fileID: 2157118096124562325, guid: d8aa08a96b2a0bc45bec5d262391f216, type: 3}
+  - {fileID: 8186384806466669871, guid: ead1c76800a752f43a622f4c749f490a, type: 3}
+  - {fileID: 5939784860101399362, guid: f1b34f96ffbd8534fbd7a8ec5676eda0, type: 3}
+  - {fileID: 3283801050862098181, guid: 24407c659a23d014e99417f93e6c25fc, type: 3}
+  - {fileID: 737447164231243680, guid: d20ca93d77c44654cb3b544a8f80e0ac, type: 3}
+  roofs:
+  - {fileID: 1023219314583660307, guid: ce30f588207b28247a5d573cf4d7a728, type: 3}
+  - {fileID: 4906161393818673382, guid: 4bdc8d48de01db142b9b19463c513fd6, type: 3}
+  - {fileID: 8891769590993384694, guid: fae7c6452e0ef3a4392606a640342fdb, type: 3}
+  - {fileID: 3618052191657739260, guid: 02dff9001c818be45bcf0a953ccdb623, type: 3}
