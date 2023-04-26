@@ -46,10 +46,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: {x: 10, y: 1, z: 10}
   color: {r: 0, g: 0, b: 0, a: 0}
-  padding: 3
+  padding: 6
   buildingPrefab: {fileID: 5151712644232845767, guid: 5156f0aa5e984ac48b98996dce9acd49,
     type: 3}
   buildings: []
   height: 0
-  attemptsAllowedToTryAndSpawn: 1000
+  density: 0
+  attemptsAllowedToTryAndSpawn: 50
   showPositionCube: 0

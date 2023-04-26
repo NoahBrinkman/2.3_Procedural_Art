@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -9,7 +10,8 @@ using Random = UnityEngine.Random;
 
 public class CityGenerator : AGeneratable
 {
-    [Header("Height Generation")]
+    [Header("Height Generation")] [SerializeField]
+    private bool generateOnPlay = true;
     [SerializeField] private Texture2D heightMap;
     [SerializeField] private int minimumHeight = 3;
     [SerializeField] private float scaleMultiplier = 10;
@@ -18,28 +20,36 @@ public class CityGenerator : AGeneratable
     [Header("Neighbourhood Generation")]
     [SerializeField] private Neighbourhood neighbourhood;
     [SerializeField] private Vector3 minimumNeighbourhoodSize;
+     [SerializeField] private int densityMultiplier = 10;
      public List<Neighbourhood> hoods;
+    
+    [Header("Road Generation")]
+    [SerializeField] private List<Vector3> cornerPoints;
 
+     [Header("Debug")]
+     [SerializeField] private GameObject debugGameObject;
 
-     [Header("Debug")] 
-     
-    [SerializeField] private GameObject debugGameObject;
+     [SerializeField] private Curve roadGenerator;
     private void Start()
     {
-        hoods = new List<Neighbourhood>();
         //SpawnHeightCubes();
-        Generate();
+        if (generateOnPlay)
+        {
+            hoods = new List<Neighbourhood>();
+            Generate();
+        }
     }
 
     public override void Generate()
     {
         
-       /* bool verticalSplit = true;
+        /*bool verticalSplit = true;
         //bool verticalSplit = false;
         List<Neighbourhood> uncutHoods = new List<Neighbourhood>();
         Neighbourhood hood = Instantiate(neighbourhood, transform.position, Quaternion.identity);
         hood.size = new Vector3(transform.localScale.x, 1, transform.localScale.y);
         uncutHoods.Add(hood);
+        int unCutCount = 0;
         while(uncutHoods.Count > 0)
         {
             Neighbourhood h = uncutHoods[uncutHoods.Count-1];
@@ -58,20 +68,21 @@ public class CityGenerator : AGeneratable
                 continue;
             }
 
+            unCutCount++;
             Neighbourhood clone1;
             Neighbourhood clone2;
             if (verticalSplit)
             {
                 clone1 = Instantiate(h, transform.position, Quaternion.identity);
                 clone1.size.z = heightCut;
-                Vector3 clone1Pos = new Vector3(h.transform.position.x, h.transform.position.y, h.transform.position.z);
+                Vector3 clone1Pos = new Vector3(clone1.transform.position.x, clone1.transform.position.y, clone1.transform.position.z +heightCut/2- transform.localScale.y/2);
                 clone1.transform.position = clone1Pos;
-                
+                clone1.transform.name = "Clone1 " + unCutCount;
                 clone2 = Instantiate(h, transform.position, Quaternion.identity);
-                Vector3 clone2Pos = new Vector3(h.transform.position.x, h.transform.position.y, h.transform.position.z);
+                Vector3 clone2Pos = new Vector3(clone2.transform.position.x, clone2.transform.position.y, clone2.transform.position.z - heightCut - transform.localScale.y/2);
                 clone2.transform.position = clone2Pos;
                 clone2.size.z -= heightCut;
-            
+                clone2.transform.name = "Clone2 " + unCutCount;
                 clone1.color = Random.ColorHSV();
                 clone2.color = Random.ColorHSV();
             }
@@ -98,12 +109,14 @@ public class CityGenerator : AGeneratable
 
         }*/
 
-       int rows = Mathf.RoundToInt(transform.localScale.y / minimumNeighbourhoodSize.z);
+       /* ###Working Grid based Generation###*/
+        int rows = Mathf.RoundToInt(transform.localScale.y / minimumNeighbourhoodSize.z);
        int cols = Mathf.RoundToInt(transform.localScale.x / minimumNeighbourhoodSize.x);
        Vector3 startPosition = transform.position;
        startPosition.x -= transform.localScale.x / 2 - minimumNeighbourhoodSize.x/2;
        startPosition.z -= transform.localScale.y / 2- minimumNeighbourhoodSize.z/2;
-       Debug.Log(startPosition.x + " " + startPosition.z);
+      
+
        for (int i = 0; i < cols; i++)
        {
            Vector3 spawnPosition = startPosition;
@@ -113,17 +126,23 @@ public class CityGenerator : AGeneratable
                spawnPosition.z = startPosition.z + minimumNeighbourhoodSize.z * j;
                Neighbourhood h = Instantiate(neighbourhood,spawnPosition,quaternion.identity);
                h.size = minimumNeighbourhoodSize;
-               h.height = GetHeight(i, j);
+
+               int x = Mathf.RoundToInt( h.transform.localPosition.x + transform.localScale.x / 2);
+               
+               int y = Mathf.RoundToInt(h.transform.localPosition.z - transform.localScale.y / 2);
+               h.height = GetHeight(x, y);
+               h.density = GetDensity(x, y);
                h.color = Random.ColorHSV();
                hoods.Add(h);
+
            }
        }
-
        foreach (Neighbourhood hood in hoods)
        {
            hood.Generate();
+           hood.transform.SetParent(transform);
+          
        }
-
     }
     
     public override void DeGenerate()
@@ -135,6 +154,7 @@ public class CityGenerator : AGeneratable
             DestroyImmediate(hood.gameObject);
         }
         deletableHoods.Clear();
+
     }
     private void Update()
     {
@@ -166,7 +186,17 @@ public class CityGenerator : AGeneratable
         
         return scale;
     }
-    
+    private int GetDensity(int x, int y)
+    {
+
+        Color c = heightMap.GetPixel(x, y);
+        
+
+        int scale;
+        scale = Mathf.RoundToInt(minimumHeight + (c.grayscale * densityMultiplier));
+
+        return scale;
+    }
     private void SpawnHeightCubes()
     {
         int width = heightMap.width;

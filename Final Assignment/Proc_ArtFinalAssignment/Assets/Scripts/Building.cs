@@ -52,14 +52,12 @@ public class Building : AGeneratable
         }
         else
         {
-            Debug.Log(height);
             height -= 2;
             Vector3 position = transform.position;
             Instantiate(helper.groundFloors[Random.Range(0, helper.groundFloors.Count)]
                 , position, Quaternion.identity, transform);
             for (int i = 0; i < height; i++)
             {
-                Debug.Log("Hi");
                 GameObject floor = helper.floors[Random.Range(0, helper.floors.Count)];
                  position = new Vector3(transform.position.x,
                     transform.position.y + sizeOfBlock + (sizeOfBlock  * i), transform.position.z);
